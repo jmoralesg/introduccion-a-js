@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.contenedor {
+  width: 400px;
+  max-width: 100%;
+  background: rgba(109, 90, 205, 0.317);
+  margin: 50px auto;
+  /* padding: 10px; */
+}
+
+.q1 {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+input {
+  font-size: 1.1rem;
+  padding: 3px 5px;
+  margin-left: 20px;
+  outline: none;
+  border-radius: 5px;
+  color: #000000;
+}
+
+#agregar {
+  font-size: 15px;
+  width: 18%;
+  cursor: pointer;
+  background: rgba(128, 0, 87, 0.372);
+  border: 0;
+  color: #f7f7f7;
+  margin: 0 2%;
+  border-radius: 5px;
+  outline: none;
+}
+
+.inicio-edades {
+  text-align: center;
+  margin: 15px 0;
+  padding: 5px;
+  background: rgba(128, 0, 87, 0.119);
+}
+
+#edades {
+  width: 50%;
+  margin: auto;
+  padding-left: 90px;
+  font-size: 14px;
+}
+
+.entradas {
+  margin: 8px 0 0 20px;
+  width: 15%;
+}
+
+#resultado {
+  width: 50%;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+#mayor-edad,
+#menor-edad,
+#promedio {
+  border-bottom: solid 2px slateblue;
+}
+
+#calcular,
+#borrar {
+  font-size: 15px;
+  width: 40%;
+  padding: 10px 0px;
+  cursor: pointer;
+  background: rgba(128, 0, 87, 0.119);
+  border: 0;
+  color: #f7f7f7;
+  margin: 5% 30%;
+  border-radius: 5px;
+  outline: none;
+}
+
+button:focus,
+button:active {
+  border: solid 2px slateblue;
+}
+
+.total {
+  width: 100%;
+  margin: auto;
+  padding: 3px 10px;
+}
