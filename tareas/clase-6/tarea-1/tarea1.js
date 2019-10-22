@@ -12,73 +12,68 @@ const $promedio = document.querySelector('#promedio');
 let edad = [];
 
 $btnAgregar.onclick = function() {
-  function creaEntradas() {
-    const $integrantes = Number(document.querySelector('#integrantes').value);
-    let nuevaEntrada;
+  const $integrantes = Number(document.querySelector('#integrantes').value);
+  creaEntradas($integrantes);
+};
 
-    while ($edades.hasChildNodes()) {
-      $edades.removeChild($edades.lastChild);
-    }
-
-    for (let i = 0; i < $integrantes; i++) {
-      $edades.appendChild(document.createTextNode('Integrante ' + (i + 1)));
-      nuevaEntrada = document.createElement('input');
-      nuevaEntrada.setAttribute('type', 'number');
-      nuevaEntrada.className = 'entradas';
-      $edades.appendChild(nuevaEntrada);
-    }
+$btnCalcular.onclick = function() {
+  const edadesEntradas = document.querySelectorAll('.entradas');
+  let edad = [];
+  for (let i = 0; i < edadesEntradas.length; i++) {
+    edad.push(Number(edadesEntradas[i].value));
   }
-
-  creaEntradas();
-
-  $btnCalcular.onclick = calculaDatos;
-
-  function calculaDatos() {
-    function promedio() {
-      let promedio = 0;
-      let edadesEntradas = document.querySelectorAll('.entradas');
-
-      for (let i = 0; i < edadesEntradas.length; i++) {
-        promedio += Number(edadesEntradas[i].value) / edadesEntradas.length;
-      }
-      $promedio.textContent = promedio;
-    }
-
-    promedio();
-
-    function mayorEdad() {
-      let edadesEntradas = document.querySelectorAll('.entradas');
-
-      let edadMayor = 0;
-
-      for (let i = 0; i < edadesEntradas.length; i++) {
-        //convierte valores del NodeList a numeros
-        edad.push(Number(edadesEntradas[i].value));
-      }
-      for (let i = 0; i < edad.length; i++) {
-        if (edad[i] > edadMayor) {
-          edadMayor = edad[i];
-        }
-      }
-      $mayorEdad.textContent = edadMayor;
-    }
-    mayorEdad();
-
-    function menorEdad() {
-      let edadMenor = edad[1];
-      for (let i = 0; i < edad.length; i++) {
-        if (edad[i] < edadMenor) {
-          edadMenor = edad[i];
-        }
-      }
-      $menorEdad.textContent = edadMenor;
-      console.log(edadMenor);
-    }
-
-    menorEdad();
-  }
+  const promedio = calcularPromedio(edad);
+  $promedio.textContent = promedio;
+  const edadMayor = calcularMayor(edad);
+  $mayorEdad.textContent = edadMayor;
+  const edadMenor = calcularMenor(edad);
+  $menorEdad.textContent = edadMenor;
 };
 
 $btnBorrar.onclick = function() {
   location.reload();
 };
+
+function creaEntradas(entradas) {
+  let nuevaEntrada;
+  while ($edades.hasChildNodes()) {
+    $edades.innerHTML = '';
+  }
+
+  for (let i = 0; i < entradas; i++) {
+    $edades.appendChild(document.createTextNode('Integrante ' + (i + 1)));
+    nuevaEntrada = document.createElement('input');
+    nuevaEntrada.setAttribute('type', 'number');
+    nuevaEntrada.className = 'entradas';
+    $edades.appendChild(nuevaEntrada);
+  }
+}
+
+function calcularPromedio(edades) {
+  let promedio = 0;
+  for (let i = 0; i < edades.length; i++) {
+    promedio += edades[i];
+  }
+
+  return Math.round(promedio / edades.length);
+}
+
+function calcularMayor(edades) {
+  let edadMayor = edades[0];
+  for (let i = 0; i < edades.length; i++) {
+    if (edades[i] > edadMayor) {
+      edadMayor = edades[i];
+    }
+  }
+  return edadMayor;
+}
+
+function calcularMenor(edades) {
+  let edadMenor = edades[0];
+  for (let i = 1; i < edades.length; i++) {
+    if (edades[i] < edadMenor) {
+      edadMenor = edades[i];
+    }
+  }
+  return edadMenor;
+}
