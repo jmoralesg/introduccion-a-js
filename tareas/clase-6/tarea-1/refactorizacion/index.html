@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>clase 6 tarea 1</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <form class="contenedor">
+      <div class="q1">
+        <label for="familiares"
+          >Cuantos integrantes tiene tu familia?</label
+        >
+        <input  type="number" name="familiares" min="1" max="50" id="integrantes"  />
+        <button type="submit" id="agregar" >Agregar</button>
+      </div>
+
+        <div id="edades">
+
+        </div>
+
+        <button type="submit" id="calcular" class="oculto" >Calcular</button>
+      </div>
+
+      <div id="resultado" class="oculto">
+        <h2>Resultados</h2>
+        <p class="total">La edad mayor es: <span id="mayor-edad"></span></span>
+        <p class="total">La edad menor es: <span id="menor-edad"></span></p>
+        <p class="total">El promedio es: <span id="promedio-edad"></span></p>
+        
+      </div>
+      <button type="reset" id="resetear">Empezar de nuevo</button>
+    </form>
+
+    <script src="calculos.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
